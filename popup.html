@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STAY ON TASK</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>STAY ON TASK</h1>
+            <p class="subtitle">The context Keeper</p>
+        </header>
+        <main id="main-content">
+            <div id="setup-view" class="view">
+                <div class="form-group">
+                    <label for="goal-input">Focus Goal</label>
+                    <textarea row="4" id="goal-input"
+                        placeholder="What do you want to focus on? (e.g., 'Learn SOLANA', 'Research quantum computing')"></textarea>
+                    <div class="char-count">
+                        <span id="char-count">0</span>/200 characters
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="strictness-select">STRICTNESS MODE</label>
+                    <div class="toggle-group">
+                        <button id="soft-mode" class="mode-btn active" data-mode="soft">
+                            Soft Mode
+                            <span class="mode-desc">Just show warnings</span>
+                        </button>
+                        <button id="hard-mode" class="mode-btn active">
+                            Hard Mode
+                            <span class="mode-desc">Auto Close Tabs</span>
+                        </button>
+                    </div>
+                    <input type="hidden" id="strictness" value="soft">
+                </div>
+                <div class="form-group">
+                    <label for="threshold-slider">
+                        Similarity Threshold:
+                        <span id="threshold-value">0.3</span>
+                    </label>
+                    <div class="slider-container">
+                        <input type="range" id="threshold-slider" min="0.1" max="0.8" step="0.05" value="0.3">
+                        <div class="slider-labels">
+                            <span>Lanient</span>
+                            <span>Strict</span>
+                        </div>
+                    </div>
+                    <p class="help-text">
+                        Lower values = more permissive, Higher values = stricter matching
+                    </p>
+                </div>
+                <button id="start-btn" class="btn btn-primary">Start Focus Session</button>
+                <div class="divider">
+                    <span>or</span>
+                </div>
+                <button id="options-btn" class="btn btn-secondary">Extension Settings</button>
+            </div>
+            <div id="session-view" class="view hidden">
+                <div class="session-status">
+                    <div class="start-indicator"></div>
+                    <span>Focus Session Active</span>
+                </div>
+                <div class="goal-display">
+                    <h3>Current Goal</h3>
+                    <p id="current-goal">No Goal Set</p>
+                </div>
+                <div class="session-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Mode:</span>
+                        <span id="current-mode" class="detail-value">Soft</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Threshold:</span>
+                        <span id="current-threshold" class="detail-value">0.3</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Started:</span>
+                        <span id="session-time" class="detail-value">Just now</span>
+                    </div>
+                </div>
+
+                <div class="session-actions">
+                    <button id="end-btn" class="btn btn-danger">
+                        End Session
+                    </button>
+                    <button id="back-to-setup" class="btn btn-secondary">
+                         Back
+                    </button>
+                </div>
+
+                <div class="tips">
+                    <h4>Tips</h4>
+                    <ul>
+                        <li>Be specific with your goal for better detection</li>
+                        <li>New tabs will be checked automatically</li>
+                        <li>Adjust threshold if getting too many/few warnings</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p class="version">v1.0.0 • STAY ON TRACK</p>
+        </footer>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+
+</html>

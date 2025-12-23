@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STAY ON TRACK- Settings</title>
+    <link rel="stylesheet" href="options.css" />
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>STAY ON TRACK- Settings</h1>
+            <p class="subtitle">Customize your focus experience</p>
+        </header>
+        <main class="main-content">
+            <div class="settings-section">
+                <h2>Default Session Settings</h2>
+                <p class="section-description">
+                    These settings will be used as defaults when starting new focus sessions.
+                </p>
+                <div class="form-group">
+                    <label for="default-strictness">Default Strictness Mode</label>
+                    <select class="form-select" id="default-strictness">
+                        <option value="soft">Soft Mode (Show warnings only)</option>
+                        <option value="hard">Hard Mode (Auto-Close Off-topic tabs)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="default-threshold">
+                        Default Similarity Threshold: <span id="threshold-display">0.3</span>
+                    </label>
+                    <input type="range" id="default-threshold" min="0.1" max="0.8" step="0.05" value="0.3"
+                        class="form-slider">
+                    <div class="slider-help">
+                        <span>More Lenient</span>
+                        <span>More Strict</span>
+                    </div>
+                    <p class="help-text">
+                        Pages with similarity score below this threshold will be considered off-topic.
+                    </p>
+                </div>
+                <div class="form-group">
+                    <label for="session-timeout">Session Timeout (Minutes)</label>
+                    <input type="number" min="10" max="480" step="5" value="120" class="form-input"
+                        id="session-timeout">
+                    <p class="help-text"> Automatically end session after this many minutes (0 = no timeout)</p>
+                </div>
+            </div>
+
+            <div class="settings-section">
+                <h2>Advanced Settings</h2>
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="enable-notifications" checked>
+                    <label for="enable-notifications">
+                        <span class="checkbox-label">Enable desktop notifications</span>
+                        <span class="checkbox-description">Show notifications when sessions start/end</span>
+                    </label>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="auto-start-browser" checked>
+                    <label for="auto-start-browser">
+                        <span class="checkbox-label">Auto-start session on browser launch</span>
+                        <span class="checkbox-description">Resume last session when opening browser</span>
+                    </label>
+                </div>
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="ignore-youtube" checked>
+                    <label for="ignore-youtube">
+                        <span class="checkbox-label">Ignore YouTube if in goal</span>
+                        <span class="checkbox-description">Don't flag YouTube if "youtube" or "video" is in goal</span>
+                    </label>
+                </div>
+            </div>
+            <div class="settings-section">
+                <h2>Data Management</h2>
+                <div class="button-group">
+                    <button id="save-btn" class="btn btn-primary">
+                        Save Settings
+                    </button>
+                    <button id="reset-btn" class="btn btn-secondary">
+                        Reset to Defaults
+                    </button>
+                    <button id="clear-data-btn" class="btn btn-danger">
+                        Clear All Data
+                    </button>
+                </div>
+                <div class="status-message" id="status-message"></div>
+            </div>
+        </main>
+        <footer class="footer">
+            <p>STAY ON TRACK v1.0.0 • Built with focus in mind</p>
+            <a href="#" id="back-to-extension">Back to Extension</a>
+        </footer>
+    </div>
+</body>
+
+<script src="options.js"></script>
+
+</html>
